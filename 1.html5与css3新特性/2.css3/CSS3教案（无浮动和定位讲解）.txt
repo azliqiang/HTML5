@@ -1,0 +1,339 @@
+
+CSS3 模块
+CSS3 被划分为模块。
+其中最重要的 CSS3 模块包括：
+选择器
+框模型
+背景和边框
+文本效果
+2D/3D 转换
+动画
+多列布局
+用户界面
+边框
+
+**********************************
+**********************************
+**********************************
+**********************************
+**********************************
+
+CSS3 边框
+
+border-radius圆角边框
+
+例1：圆角边框
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+div
+{
+text-align:center;
+border:2px solid #a1a1a1;
+padding:10px 40px; 
+background:#dddddd;
+width:350px;
+border-radius:25px;
+-moz-border-radius:25px; /* 老的 Firefox */
+}
+</style>
+</head>
+<body>
+
+<div>border-radius 属性允许您向元素添加圆角。</div>
+
+</body>
+</html>
+
+**********************************
+**********************************
+**********************************
+**********************************
+**********************************
+
+css3边框阴影
+
+box-shadow 边框阴影
+
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+div
+{
+width:300px;
+height:100px;
+background-color:#ff9900;
+-moz-box-shadow: 10px 10px 5px #888888; /* 老的 Firefox */
+box-shadow: 10px 10px 5px #888888;
+}
+</style>
+</head>
+<body>
+
+<div></div>
+
+</body>
+</html>
+
+**********************************
+**********************************
+**********************************
+**********************************
+**********************************
+
+css3边框图片
+
+border-image边框图片
+
+
+**********************************
+**********************************
+**********************************
+**********************************
+**********************************
+
+css3文本效果
+
+CSS3 文本阴影：text-shadow：px px px #ff0000
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1
+{
+text-shadow: 5px 5px 5px #FF0000;
+}
+</style>
+</head>
+<body>
+
+<h1>文本阴影效果！</h1>
+
+</body>
+</html>
+
+**********************************
+**********************************
+**********************************
+**********************************
+**********************************
+
+2D转换
+
+例1：旋转：transform:rotate(9deg);
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+div
+{
+margin:30px;
+width:200px;
+height:100px;
+background-color:yellow;
+/* Rotate div */
+transform:rotate(9deg);
+-ms-transform:rotate(9deg); /* Internet Explorer */
+-moz-transform:rotate(9deg); /* Firefox */
+-webkit-transform:rotate(9deg); /* Safari 和 Chrome */
+-o-transform:rotate(9deg); /* Opera */
+}
+</style>
+</head>
+<body>
+
+<div>Hello World</div>
+
+</body>
+</html>
+
+**********************************
+**********************************
+**********************************
+**********************************
+**********************************
+
+2D旋转：transform:rotate(30deg);
+
+<style>
+div
+{
+width:100px;
+height:75px;
+background-color:yellow;
+border:1px solid black;
+transform:rotate(30deg);
+-ms-transform:rotate(30deg); /* IE 9 */
+-moz-transform:rotate(30deg); /* Firefox */
+-webkit-transform:rotate(30deg); /* Safari and Chrome */
+-o-transform:rotate(30deg); /* Opera */
+}
+</style>
+
+**********************************
+**********************************
+**********************************
+**********************************
+**********************************
+
+3D转换
+
+绕x轴旋转：transform:rotateX(45deg);
+
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+div
+{
+width:100px;
+height:75px;
+background-color:yellow;
+border:1px solid black;
+}
+div#div2
+{
+transform:rotateX(45deg);
+-webkit-transform:rotateX(45deg); /* Safari and Chrome */
+-moz-transform:rotateX(45deg); /* Firefox */
+}
+</style>
+</head>
+<body>
+
+<div>你好。这是一个 div 元素。</div>
+
+<div id="div2">你好。这是一个 div 元素。</div>
+
+<p><b>注释：</b> Internet Explorer 和 Opera 不支持 rotateX 方法。</p>
+
+</body>
+</html>
+
+
+*绕y轴旋转：transform:rotateY(130deg);
+
+**********************************
+**********************************
+**********************************
+**********************************
+**********************************
+
+CSS3 过渡
+
+通过 CSS3，我们可以在不使用 Flash 动画或 JavaScript 的情况下，当元素从一种样式变换为另一种样式时为元素添加效果。
+请把鼠标移动到下面的元素上：
+
+每种效果的过度时长（transition属性）：
+transition:width 2s,height 2s,background 2s,transform 2s;
+
+div:hover悬停选择器，会选择鼠标悬停在其上的div标签
+
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+div,p
+{
+border-radius:10px;
+text-align:center;
+width:100px;
+height:100px;
+background:yellow;
+transition:width 2s,height 2s,background 2s,transform 2s;
+-webkit-transition:width 2s,height 2s,background 2s,transform 2s;
+-moz-transition:width 2s,height 2s,background 2s,transform 2s; /* Firefox 4 */
+-webkit-transition:width 2s,height 2s,background 2s,transform 2s; /* Safari and Chrome */
+-o-transition:width 2s,height 2s,background 2s,transform 2s; /* Opera */
+}
+
+div:hover,p:hover
+{
+width:200px;
+height:200px;
+background:red;
+transform:rotate(360deg);
+}
+</style>
+</head>
+<body>
+
+<div>过度效果</div>
+
+<p>请把鼠标指针放到黄色的元素上，来查看过渡效果。</p>
+
+<p><b>注释：</b>本例在 Internet Explorer 中无效。</p>
+
+</body>
+</html>
+
+（*可以用transition-delay:2s设置过度效果在2秒后开始）
+
+**********************************
+**********************************
+**********************************
+**********************************
+**********************************
+
+css3动画
+
+@keyframes定义动画，可以用from/to，也可以用百分比。
+在css中使动画与元素关联animation:myfirst 2s 3;（3为播放次数）
+
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+div
+{
+text-align:center;
+border-radius:10px;
+width:100px;
+height:50px;
+background:red;
+animation:myfirst 2s 3;
+-moz-animation:myfirst 5s; /* Firefox */
+-webkit-animation:myfirst 2s 3; /* Safari and Chrome */
+-o-animation:myfirst 5s; /* Opera */
+}
+
+@keyframes myfirst
+{
+0% {background:red;}
+50% {width:200px;height:100px;background:yellow;}
+100% {transform:rotate(360deg);}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+0% {background:red;}
+50% {width:200px;height:100px;background:yellow;}
+100% {transform:rotate(360deg);}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+0% {background:red;}
+50% {width:200px;height:100px;background:yellow;}
+100% {transform:rotate(360deg);}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+0% {background:red;}
+50% {width:200px;height:100px;background:yellow;}
+100% {transform:rotate(360deg);}
+}
+</style>
+</head>
+<body>
+
+<div>看我看我</div>
+
+<p><b>注释：</b>本例在 Internet Explorer 中无效。</p>
+
+</body>
+</html>

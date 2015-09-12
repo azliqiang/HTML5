@@ -1,0 +1,139 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Mobile Web 应用程序</title>
+<link href="jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
+<script src="jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery.mobile-1.0.min.js" type="text/javascript"></script>
+</head> 
+<style>
+.head{
+	background:#F00;
+}
+
+.navtop{
+	background:#FFF;
+}
+.nav_btn{
+	text-decoration:none;;
+}
+.foot{
+	background:#666;
+}
+</style>
+<script>
+function jumpToDetail(obj)
+{
+	var img = obj.children[1];
+	
+	var h = obj.children[2];
+	
+	var p = obj.children[3];
+	
+	var detailtitle = document.getElementById("detailtitle");
+	detailtitle.innerHTML=h.innerHTML;
+	
+	var detailimg = document.getElementById("detailimg");
+	detailimg.src = img.src;
+	
+	var detailcontent = document.getElementById("detailcontent");
+	detailcontent.innerHTML = p.innerHTML;
+	
+	window.location.href = "#pagetwo";
+}
+</script>
+<body> 
+
+<div data-role="page" data-theme="d">
+	<div data-role="header" data-position="fixed" class="head">
+    	<h1>网易新闻</h1>
+        <div class="navtop">
+        	<a href="#" class="nav_btn">头条</a>
+            <a href="#" class="nav_btn">娱乐</a>
+            <a href="#" class="nav_btn">热点</a>
+            <a href="#" class="nav_btn">体育</a>
+            <a href="#" class="nav_btn">财经</a>
+            <a href="#" class="nav_btn">科技</a>
+            <a href="#" class="nav_btn">图片</a>
+            <a href="#" class="nav_btn">汽车</a>
+        </div>
+    </div>
+    <div data-role="content">
+    	<ul data-role="listview">
+        	<li>
+        		<a onClick="jumpToDetail(this)" data-icon="arrow-r">
+            	<img src="5.jpg">
+            	<h2>隔壁老王惨死家中</h2>
+            	<p>警方认为其活该，不予立案。</p>
+            	<p class="ui-li-aside">22:33</p>
+            	</a>
+            </li>
+            <li>
+        		<a onClick="jumpToDetail(this)" data-icon="arrow-r">
+            	<img src="2.jpg">
+            	<h2>王思聪娇妻</h2>
+            	<p>目前，王尼玛已经被捕。</p>
+            	<p class="ui-li-aside">22:33</p>
+            	</a>
+            </li>
+            <li>
+        		<a onClick="jumpToDetail(this)" data-icon="arrow-r">
+            	<img src="5.jpg">
+            	<h2>隔壁老王惨死家中</h2>
+            	<p>警方认为其活该，不予立案。</p>
+            	<p class="ui-li-aside">22:33</p>
+            	</a>
+            </li>
+            <li>
+        		<a onClick="jumpToDetail(this)" data-icon="arrow-r">
+            	<img src="2.jpg">
+            	<h2>王思聪娇妻</h2>
+            	<p>目前，王尼玛已经被捕。</p>
+            	<p class="ui-li-aside">22:33</p>
+            	</a>
+            </li><li>
+        		<a onClick="jumpToDetail(this)" data-icon="arrow-r">
+            	<img src="5.jpg">
+            	<h2>隔壁老王惨死家中</h2>
+            	<p>警方认为其活该，不予立案。</p>
+            	<p class="ui-li-aside">22:33</p>
+            	</a>
+            </li>
+            <li>
+        		<a onClick="jumpToDetail(this)" data-icon="arrow-r">
+            	<img src="2.jpg">
+            	<h2>王思聪娇妻</h2>
+            	<p>目前，王尼玛已经被捕。</p>
+            	<p class="ui-li-aside">22:33</p>
+            	</a>
+            </li>
+        </ul>
+    </div>
+    <div data-role="footer" data-position="fixed" class="foot" >
+    	<div data-role="navbar">
+        	<ul>
+            	<li><a id="weixin" href="#" data-icon="custom" class="foot">新闻</a></li>
+				<li><a id="tongxunlu" href="#" data-icon="custom" class="foot">阅读</a></li>
+				<li ><a id="faxian" href="#" data-icon="custom" class="foot">试听</a></li>
+				<li><a id="wo" href="#" data-icon="custom" class="foot">发现</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div data-role="page" data-theme="b" id="pagetwo">
+	<div data-role="header" class="head" data-position="fixed">
+    	<a data-role="button" data-rel="back" style="background:#F00">返回</a>
+    	<h1>详情</h1>
+    </div>
+
+    <h1 id="detailtitle"></h1>
+    <img id="detailimg" src="" width="100%">
+    <p id="detailcontent"></p>
+    
+</div>
+
+</body>
+</html>

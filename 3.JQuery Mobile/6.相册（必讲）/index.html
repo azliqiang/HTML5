@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<link href="jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
+<script src="jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery.mobile-1.0.min.js" type="text/javascript"></script>
+<script>
+function show(img)
+{
+	//img的图片，传给bigpic
+	var bigpic = document.getElementById("bigpic");
+	
+	bigpic.src = img.src;
+	
+	window.location.href = "#pagetwo";
+}
+</script>
+<style>
+.head
+{
+	background:#F00;
+}
+</style>
+<body>
+	<div data-role="page" id="pageone">
+    	<div data-role="header" data-position="fixed" class="head">
+        	<h1>照片</h1>
+        </div>
+        <div class="pics">
+        	<img src="img/1.jpg" width="24%" onClick="show(this)">
+            <img src="img/2.jpg" width="24%" onClick="show(this)">
+            <img src="img/4.jpg" width="24%" onClick="show(this)">
+            <img src="img/5.jpg" width="24%" onClick="show(this)">
+            <img src="img/6.jpg" width="24%" onClick="show(this)">
+            <img src="img/7.jpg" width="24%" onClick="show(this)">
+        </div>
+    </div>
+    
+    <div data-role="page" id="pagetwo">
+    	<div data-role="header" data-position="fixed" class="head">
+        	<a data-role="button" data-rel="back">返回</a>
+            <a data-role="button" data-rel="back">返回</a>
+        	<h1>详情</h1>
+        </div>
+        <img id="bigpic" width="100%">
+    </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+分组按钮
+
+data-role="controlgroup" data-type="horizontal"
+
+onChange事件
+
+setInterval计时器

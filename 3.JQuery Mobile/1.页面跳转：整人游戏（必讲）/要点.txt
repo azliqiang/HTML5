@@ -1,0 +1,5 @@
+页面跳转
+href=“#pagetwo”
+
+跳转方式
+data-transition

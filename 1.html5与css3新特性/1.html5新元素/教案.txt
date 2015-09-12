@@ -1,0 +1,173 @@
+
+音频
+
+h5使用audio标签播放音频，其用法与vedio
+
+<audio src="但愿人长久.mp3" controls="controls">您的浏览器不支持audio</audio>
+
+
+
+***************************************
+***************************************
+***************************************
+***************************************
+***************************************
+
+视频播放
+
+h4中大多数视频通过插件播放，如flash，但并非所有浏览器都拥有同样的插件，h5通过video元素规定了视频播放的标准方法
+创建视频元素：
+<video src="横冲直撞好莱坞.mp4" controls="controls" autoplay="autoplay"></video>
+解释：controls属性提供播放，暂停和音量控件，autoplay属性：视频就绪后马上播放。
+
+浏览器都支持video标签，<video></video>之间的内容可供不支持该标签的浏览器显示，如老版本ie：
+<video src="横冲直撞好莱坞.mp4" controls="controls" autoplay="autoplay">您的浏览器不支持video</video>
+
+同时并非所有浏览器都支持相同的视频格式，如safari浏览器只支持mpeg4视频格式，为了匹配不同的浏览器，需要使用source标签：
+<video>
+	<source src="move.mpeg4" type="video/mpeg4">
+	<source src="move.mp4" type="video/mp4">
+	您的浏览器不支持video
+</video>
+video允许多个source元素，source可连接不同的视频文件，浏览器将使用第一个可识别的格式。
+
+
+***************************************
+***************************************
+***************************************
+***************************************
+***************************************
+
+使用js创建视频元素
+
+在前面的例子中，我们直接在html文档中定于页面元素，很多时候希望可以在需要的时候再去创建页面元素，比如播放视频
+
+定义一个函数：
+function playMovie()
+{	
+创建视频元素
+var x = document.createElement("video");
+为元素添加文本：
+var text = document.createTextNode("您的浏览器不支持video");	
+x.appendChild(text);
+为元素添加属性：
+x.setAttribute("src","横冲直撞好莱坞.mp4");
+x.setAttribute("controls","controls");
+x.setAttribute("autoplay","autoplay");
+将元素插入页面：
+document.body.appendChild(x);
+}
+
+创建button，调用次函数：
+<button onClick="playMovie()">播放：横冲直撞好莱坞
+</button>
+
+重复点击按钮会插入多个video元素，需要在点击按钮后移除按钮：
+为函数添加参数：
+function playMovie(obj)
+在触发点击时将button元素传入：
+onClick="playMovie(this)"
+在函数中添加移除元素代码：
+document.body.removeChild(obj);
+
+***************************************
+***************************************
+***************************************
+***************************************
+***************************************
+
+video属性，方法和事件
+
+play()，pause()：
+通常情况下，大多数视频在点击时都会触发暂停和播放，可以为video标签添加onclick事件，在函数中调用play()，pause()：
+<video src="横冲直撞好莱坞.mp4" controls="controls" autoplay="autoplay" onClick="playPause(this)">您的浏览器不支持video</video>
+js代码：
+function playPause(obj)
+{
+	if(obj.paused)
+	{
+		obj.play();
+	}
+	else
+	{
+		obj.pause();
+	}
+}
+解释：paused为video的属性，当视频处于暂停状态时，paused为true。
+
+
+同样也可以在js代码中为节点设置onClick属性：
+x.setAttribute("onClick","playPause(this)");
+
+***************************************
+***************************************
+***************************************
+***************************************
+***************************************
+
+画布canvas
+
+canvas 拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法。
+
+创建一块画布
+<canvas id="demo" width="300" height="300" style="background-color:red"></canvas>
+
+canvas本身没有绘图能力，所有绘制工作必须在js内部完成
+
+<canvas id="demo" width="300" height="300"></canvas>
+
+<script>
+var obj = document.getElementById("demo");
+var context = obj.getContext("2d");
+context.fillStyle="#FF0000";
+context.fillRect(100,100,100,100);
+//绘制直线
+context.moveTo(100,100);
+context.lineTo(150,50);
+context.lineTo(10,50);
+context.stroke();
+//绘制圆
+context.fillStyle="#FF0000";
+context.beginPath();
+//200圆心x，250圆心y，10半径，Math.PI*2弧度
+context.arc(200,250,10,0,Math.PI*2,true);
+context.closePath();
+context.fill();
+//绘制渐变
+var grd=context.createLinearGradient(0,0,175,50);
+grd.addColorStop(0,"#FF0000");
+grd.addColorStop(1,"#00FF00");
+context.fillStyle=grd;
+context.fillRect(0,0,175,40);
+</script>
+
+***************************************
+***************************************
+***************************************
+***************************************
+***************************************
+
+我们能用Canvas做些什么？
+
+1. 游戏：毫无疑问，游戏在HTML5领域具有举足轻重的地位。HTML5在基于Web的图像显示方面比Flash更加立体、更加精巧，Ohad认为运用Canvas制作的图像能够令HTML5游戏在流畅度和跨平台方面发挥更大的潜力。
+
+2. 图表制作：图表制作时常被人们忽略，但无论企业内部还是企业间交流合作都离不开图表。现在一些开发者使用HTML/CSS完成图标制作，但Ohad认为大家完全可以用Canvas来实现。当然，使用SVG（可缩放矢量图形）来完成图表制作也是非常好的方法。
+
+3. banner广告：Flash曾经辉煌的时代，智能手机还未曾出现。现在以及未来的智能机时代，HTML5技术能够在banner广告上发挥巨大作用，用Canvas实现动态的广告效果再合适不过。
+
+4. 模拟器：Ohad认为，无论从视觉效果还是核心功能方面来说，模拟器产品可以完全由JavaScript来实现。
+
+5. 远程计算机控制：Canvas可以让开发者更好地实现基于Web的数据传输，构建一个完美的可视化控制界面。
+
+6. 字体设计：对于字体的自定义渲染将完全可以基于Web，使用HTML5技术进行实现。
+
+7. 图形编辑器：Ohad预测，图形编辑器将能够100%基于Web实现。
+
+8. 其他可嵌入网站的内容：类似图表、音频、视频，还有许多元素能够更好地与Web融合，并且不需要任何插件。Ohad呼吁大家继续挖掘Canvas的潜力，运用HTML5技术创造更多价值。
+
+***************************************
+***************************************
+***************************************
+***************************************
+***************************************
+
