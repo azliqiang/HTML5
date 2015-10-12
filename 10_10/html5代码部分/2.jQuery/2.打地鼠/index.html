@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<script src="jquery-2.1.1.min.js"></script>
+<style>
+*{
+	margin:0;
+	padding:0;
+}
+#gamediv{
+	width:330px;
+	height:330px;
+	margin:50px auto;
+}
+</style>
+<script>
+$(document).ready(function(e) {
+	
+	var gamediv = document.getElementById("gamediv");
+	
+    setInterval(function(){
+		
+		//产生一个0~8的数，不包括8；
+		var x = Math.random()*8;
+		//取整数
+		x = Math.round(x);
+		
+		var img = gamediv.children[x];
+		//变为地鼠
+		img.src = "2.png";
+		
+		//再取一个变为草丛
+		x = Math.random()*8;
+
+		x = Math.round(x);
+		
+		img = gamediv.children[x];
+		
+		img.src = "5.jpg";
+		
+		},1000);
+});
+
+var x = 0;
+
+function beat(obj)
+{
+	//取出图片路径
+	var srcstr = obj.src;
+	//截取倒数四个字符比较是否为地鼠，若是，变为草丛，分数加一
+	if(srcstr.charAt(srcstr.length-5) == "2")
+	{
+		obj.src = "5.jpg";
+		
+		x++;
+		
+		document.getElementById("source").innerHTML = "得分："+x;
+	}
+}
+</script>
+<body>
+<div id="gamediv">
+	<img src="5.jpg" width="100px" height="100px" onClick="beat(this)">
+    <img src="5.jpg" width="100px" height="100px" onClick="beat(this)">
+    <img src="5.jpg" width="100px" height="100px" onClick="beat(this)">
+    <img src="5.jpg" width="100px" height="100px" onClick="beat(this)">
+    <img src="5.jpg" width="100px" height="100px" onClick="beat(this)">
+    <img src="5.jpg" width="100px" height="100px" onClick="beat(this)">
+    <img src="5.jpg" width="100px" height="100px" onClick="beat(this)">
+    <img src="5.jpg" width="100px" height="100px" onClick="beat(this)">
+    <img src="5.jpg" width="100px" height="100px" onClick="beat(this)">
+</div>
+<p id="source" style="width:100px; height:100px; margin:0px auto;"></p>
+</body>
+</html>

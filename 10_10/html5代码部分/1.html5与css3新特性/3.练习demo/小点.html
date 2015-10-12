@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<style>
+body{
+	background:#000;
+}
+.down,.up,.downdown{
+	width:100px;
+	height:100px;
+	background:#FFF;
+	border-radius:50px;
+	-webkit-border-radius:50px;
+	position:absolute;
+	left:300px;
+	top:300px;
+}
+.downdown{
+	background:rgba(51,255,255,1);
+	}
+.down{
+	animation:animat 2s infinite;
+	-webkit-animation:animat 2s infinite;
+}
+@keyframes animat{
+	from{}
+	to{
+		width:200px; 
+		height:200px; 
+		border-radius:100px; 
+		-webkit-border-radius:100px;
+		background:rgba(255,255,255,0);
+		left:250px;
+		top:250px;
+	}
+}
+
+@-webkit-keyframes animat{
+	from{}
+	to{
+		width:200px; 
+		height:200px; 
+		border-radius:100px; 
+		-webkit-border-radius:100px;
+		background:rgba(255,255,255,0);
+		left:250px;
+		top:250px;
+	}
+}
+.downdown{
+	animation:downani 2s infinite;
+	-webkit-animation:downani 2s infinite;
+}
+@keyframes downani{
+	from{}
+	to{
+		width:300px; 
+		height:300px; 
+		border-radius:150px; 
+		-webkit-border-radius:150px;
+		background:rgba(51,255,255,0);
+		left:200px;
+		top:200px;
+	}
+}
+
+@-webkit-keyframes downani{
+	from{}
+	to{
+		width:300px; 
+		height:300px; 
+		border-radius:150px; 
+		-webkit-border-radius:150px;
+		background:rgba(51,255,255,0);
+		left:200px;
+		top:200px;
+	}
+}
+</style>
+<body>
+	<div class="downdown"></div>
+	<div class="down"></div>
+	<div class="up"></div>
+</body>
+</html>

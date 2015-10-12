@@ -1,0 +1,237 @@
+JQuery
+
+jQuery 是一个“写的更少，但做的更多”的轻量级 JavaScript 库。
+jQuery 库包含以下特性：
+HTML 元素选取
+HTML 元素操作
+CSS 操作
+HTML 事件函数
+JavaScript 特效和动画
+HTML DOM 遍历和修改
+AJAX
+Utilities
+
+
+*******************************************
+*******************************************
+*******************************************
+*******************************************
+*******************************************
+
+JQuery语法：
+
+基础语法是：$(selector).action()
+解释：
+美元符号定义 jQuery
+选择符（selector）“查询”和“查找” HTML 元素
+jQuery 的 action() 执行对元素的操作
+
+例子：显示和隐藏段落
+引入jquery.js：
+<script src="jquery.js"></script>
+
+<p id="text">显示和隐藏此段落</p>
+<button id="hide">隐藏</button>
+<button id="show">显示</button>
+
+<script>
+$(document).ready(function(e) {
+    $("#hide").click(function(){
+ $("p").hide();
+ });
+    $("#show").click(function(){
+ $("p").show();
+ });
+});
+
+(通过 jQuery，您可以使用 toggle() 方法来切换 hide() 和 show() 方法。
+ $("p").hide(1000);
+
+$(selector).toggle(speed,callback);
+可选的 speed 参数规定隐藏/显示的速度，可以取以下值："slow"、"fast" 或毫秒。
+可选的 callback 参数是 toggle() 方法完成后所执行的函数名称。
+)
+
+*jquery事件
+$(document).ready(function)将函数绑定到文档的就绪事件（当文档完成加载时）
+$(selector).click(function)触发或将函数绑定到被选元素的点击事件
+$(selector).dblclick(function)触发或将函数绑定到被选元素的双击事件
+$(selector).focus(function)触发或将函数绑定到被选元素的获得焦点事件
+$(selector).mouseover(function)触发或将函数绑定到被选元素的鼠标悬停事件
+
+*******************************************
+*******************************************
+*******************************************
+*******************************************
+*******************************************
+
+jquery 效果
+
+淡入/淡出/淡化：
+
+<div id="div1" style="width:90px; height:90px; background-color:red; display:none"></div>
+<br>
+<div id="div2" style="width:90px; height:90px; background-color:blue;display:none"></div>
+<br>
+<div id="div3" style="width:90px; height:90px; background-color:green;display:none"></div>
+解释：display：none使其隐藏
+
+<button id="btn">点击淡入</button>
+
+<script>
+$(document).ready(function(e) {
+    $("#btn").click(function(){
+ $("#div1").fadeIn();
+ $("#div2").fadeIn("slow");
+ $("#div3").fadeIn(3000);
+ })
+});
+</script>
+
+淡出：
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#div1").fadeOut();
+    $("#div2").fadeOut("slow");
+    $("#div3").fadeOut(3000);
+  });
+});
+</script>
+
+淡入淡出间切换：fadeToggle()方法
+$(document).ready(function(e) {
+    $("#btn").click(function(){
+ $("#div1").fadeToggle();
+ $("#div2").fadeToggle("slow");
+ $("#div3").fadeToggle(3000);
+ })
+});
+</script>
+
+fadeTo()
+渐变为指定的不透明度
+取值为0~1,0为全透明，1为完全不透明。
+<script>
+$(document).ready(function(e) {
+    $("#btn").click(function(){
+ $("#div1").fadeTo("slow",0.5);
+ $("#div2").fadeTo("slow",0.15);
+ $("#div3").fadeTo(3000,0);
+ })
+});
+</script>
+
+*******************************************
+*******************************************
+*******************************************
+*******************************************
+*******************************************
+
+滑动
+与淡入淡出很相似：
+slideDown()：下拉
+slideUp()：收起
+slideToggle()：下拉收起间切换
+
+用滑动效果实现音乐播放器：点击显示歌词：
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<style type="text/css">
+#title,#text{
+margin:0px;
+padding:5px;
+width:300px;
+text-align:center;
+background:#e5eecc;
+border:solid 1px #c3c3c3;
+}
+</style>
+<script src="jquery.js"></script>
+<script>
+$(document).ready(function(e) {
+    $("#title").click(function(){
+  $("#text").slideToggle("slow");
+  var x = document.getElementById("music");
+  if(x.paused)
+  {
+   x.play();
+  }
+  else
+  {
+   x.pause();
+  }
+  });
+});
+</script>
+
+<body>
+
+<p id="title">但愿人长久-朱强</p>
+
+<div id="text" style="display:none">
+<audio id="music" src="但愿人长久.mp3" controls="controls"></audio>
+>
+<p>把酒问青天</p>
+<p>不知天上宫厥</p>
+<p>今夕是何年</p>
+<p>我欲乘风归去</p>
+<p>又恐琼楼玉宇</p>
+<p>高处不胜寒</p>
+<p>起舞弄清影</p>
+<p>何似在人间</p>
+<p>转朱阁，低绮户，照无眠</p>
+<p>不应又恨，何事长向别时圆</p>
+<p>人有悲欢离合</p>
+<p>月有阴晴圆缺</p>
+<p>此事古难全</p>
+<p>但愿人长久</p>
+<p>千里共婵娟</p>
+</div>
+
+</body>
+</html>
+
+*******************************************
+*******************************************
+*******************************************
+*******************************************
+*******************************************
+
+jquery动画：
+
+语法：$(selector).animate({params},speed,callback);
+必需的 params 参数定义形成动画的 CSS 属性。
+可选的 speed 参数规定效果的时长。它可以取以下值："slow"、"fast" 或毫秒
+可选的 callback 参数是动画完成后所执行的函数名称。
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="/jquery/jquery-1.11.1.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("div").animate({
+      left:'50px',
+      height:'+=50px',
+      width:'+=50px'
+    });
+  });
+});
+</script>
+</head>
+ 
+<body>
+
+<button>开始动画</button>
+<p>默认情况下，所有 HTML 元素的位置都是静态的，并且无法移动。如需对位置进行操作，记得首先把元素的 CSS position 属性设置为 relative、fixed 或 absolute。</p>
+<div style="background:#98bf21;height:100px;width:100px;position:absolute;">
+</div>
+
+</body>
+</html>

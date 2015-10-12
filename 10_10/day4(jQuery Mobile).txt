@@ -1,0 +1,460 @@
+﻿
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ *
+ * Description:
+ *            H5第四天授课内容，主要了解jQuery Mobile库。
+ *
+ * Original Date:
+ *     10-10-2015
+ 
+ *
+ * Modified Date:
+ 
+ *
+ * Authors:
+ *     create by 杨宇超
+ *     yangyuchao@1000phone.com
+ *
+ * Current Version:
+ *     1.0.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Table of Centents（目录）
+
+   
+01.jQuery Mobile简介
+02.页面跳转:整人游戏
+03.简单的手机通讯录
+04.私密相册
+05.简单聊天界面:名医在线
+
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+01.jQuery Mobile简介
+     jQuery Mobile是一个写的更少做的更多的库，完全兼容jQuery，包含css文件，使用自定义属性定义元素样式。
+
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+02.页面跳转:整人游戏
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>跳转</title>
+<link href="jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
+<script src="jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery.mobile-1.0.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<div data-role="page" id="pageone">
+<div class="content" style="text-align:center;top:100px; position:relative;">
+<h1>整人游戏</h1>
+</div>
+<a data-role="button" href="#pagetwo" style="top:200px;">开始游戏</a>
+</div>
+
+<div data-role="page" id="pagetwo">
+老实交代！你是不是弱智！
+<a data-role="button" href="#pagefinal">你说对了，我就是弱智！</a>
+<a data-role="button" href="#pagethree">老子不是！</a>
+</div>
+
+<div data-role="page" id="pagethree">
+还说谎！你是不是弱智！？
+<a data-role="button" href="#pagefinal">好吧，我是~</a>
+<a data-role="button" href="#pagetwo">当然不是！</a>
+</div>
+
+<div data-role="page" id="pagefinal">
+早承恩不就好了
+</div>
+
+</body>
+</html>
+
+注：data-role="page"定义该div盒子的内容为一页，jQuery Mobile允许一个文档内存在多个页面；
+       data-role="button"定义该a标签为一个button。
+
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+03.简单的手机通讯录
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Mobile Web 应用程序</title>
+<link href="jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
+<script src="jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery.mobile-1.0.min.js" type="text/javascript"></script>
+</head> 
+<body> 
+
+<div data-role="page" id="pageone" data-theme="c">
+                <div data-role="header" data-position="fixed">
+                <h1>所有联系人</h1>
+    </div>
+    <div data-role="content">
+    	<ul data-role="listview">
+        	<li data-role="list-divider"><p>我的女人们</p></li>
+            <li>
+            <h3>李冰冰</h3>
+            <p>13333333333</p>
+            </li>
+            <li>
+            <h3>汤唯</h3>
+            <p>13333333333</p>
+            </li>
+            <li data-role="list-divider"><p>我的儿女们</p></li>
+            <li>
+            <h3>老大</h3>
+            <p>13333333333</p>
+            </li>
+            <li>
+            <h3>老三</h3>
+            <p>13333333333</p>
+            </li>
+        </ul>
+    </div>
+    <div data-role="footer" data-position="fixed">
+    	<div data-role="navbar">
+        	<ul>
+            	<li><a href="#">个人收藏</a></li>
+                <li><a href="#pagetwo">最近通话</a></li>
+                <li><a href="#">通讯录</a></li>
+                <li><a href="#">拨号键盘</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="pagetwo" data-theme="c">
+	<div data-role="header" data-position="fixed">
+    	<h1>最近通话</h1>
+    </div>
+    <div data-role="content">
+    	<ul data-role="listview">
+            <li>
+            <h3>李冰冰</h3>
+            <p>13333333333</p>
+            <p class="ui-li-aside">9:11</p>
+            <p>60min</p>
+            </li>
+            <li>
+            <h3>汤唯</h3>
+            <p>13333333333</p>
+            </li>
+            <li>
+            <h3>老大</h3>
+            <p>13333333333</p>
+            </li>
+            <li>
+            <h3>老三</h3>
+            <p>13333333333</p>
+            </li>
+        </ul>
+    </div>
+    <div data-role="footer" data-position="fixed">
+    	<div data-role="navbar">
+        	<ul>
+            	<li><a href="#">个人收藏</a></li>
+                <li><a href="#">最近通话</a></li>
+                <li><a href="#pageone">通讯录</a></li>
+                <li><a href="#">拨号键盘</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+注:jQuery Mobile页面可分为三部分，头、内容、尾，分别使用data-role="header"，data-role="content"，data-role="footer"定义。
+
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+04.私密相册
+     相册分为两个html文档，登录页面需要输入密码，判断密码是否正确，使用js代码进行页面跳转。
+     相片浏览页面需要对被点击的照片进行大图展示。
+
+     登录页面代码:
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Mobile Web 应用程序</title>
+<link href="jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
+<script src="jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery.mobile-1.0.min.js" type="text/javascript"></script>
+</head> 
+
+
+<script>
+
+var num = 3;
+
+function jump()
+{
+	var obj = document.getElementById("password");
+	
+	if(obj.value == "123456")
+	{
+		if(num>0)
+		{
+			//实现跳转
+			window.location.href = "index.html";
+		}
+		else
+		{
+			alert("相册已经被锁定,请持身份证到营业厅解锁");
+		}
+	}
+	else
+	{
+		obj.value = "";
+		
+		if(num==0)
+		{
+			alert("相册已经被锁定,请持身份证到营业厅解锁");
+		}
+		else
+		{
+			num--;
+			alert("密码错误,还有"+num+"次机会");
+		}
+	}
+}
+</script>
+
+
+<body> 
+
+<div data-role="page">
+	<div data-role="header" data-position="fixed">
+    	<h1>私密相册</h1>
+    </div>
+    <img src="photo" width="50%" style="margin-left:25%">
+    <form>
+    	<input type="password" name="password" id="password">
+    </form>
+    <a data-role="button" onClick="jump()">登录</a>
+</div>
+
+</body>
+</html>
+
+     index.html照片页面代码:
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<link href="jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
+<script src="jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery.mobile-1.0.min.js" type="text/javascript"></script>
+<script>
+function show(img)
+{
+	//img的图片，传给bigpic
+	var bigpic = document.getElementById("bigpic");
+	
+	bigpic.src = img.src;
+	
+	window.location.href = "#pagetwo";
+}
+</script>
+<style>
+.head
+{
+	background:#F00;
+}
+</style>
+<body>
+	<div data-role="page" id="pageone">
+    	<div data-role="header" data-position="fixed" class="head">
+        	<h1>照片</h1>
+        </div>
+        	<img src="img/1.jpg" width="24%" onClick="show(this)">
+            <img src="img/2.jpg" width="24%" onClick="show(this)">
+            <img src="img/4.jpg" width="24%" onClick="show(this)">
+            <img src="img/5.jpg" width="24%" onClick="show(this)">
+            <img src="img/6.jpg" width="24%" onClick="show(this)">
+            <img src="img/7.jpg" width="24%" onClick="show(this)">
+    </div>
+    
+    <div data-role="page" id="pagetwo">
+    	<div data-role="header" data-position="fixed" class="head">
+        	<a data-role="button" data-rel="back">返回</a>
+            <a data-role="button" data-rel="back">返回</a>
+        	<h1>详情</h1>
+        </div>
+        <img id="bigpic" width="100%">
+    </div>
+</body>
+</html>
+
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+05.简单聊天界面:名医在线
+
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Mobile Web 应用程序</title>
+<link href="jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
+<script src="jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery.mobile-1.0.min.js" type="text/javascript"></script>
+</head> 
+<script>
+function talk(obj)
+{
+	var name = obj.children[1];
+	
+	document.getElementById("docname").innerHTML = "与"+name.innerHTML+"聊天中";
+	
+	var img = obj.children[0];
+	
+	document.getElementById("docimg").src = img.src;
+}
+
+function send()
+{
+	var input = document.getElementById("inputlable");
+	
+	if(input.value != "")
+	{
+		var massagebox = document.createElement("div");
+	
+		massagebox.setAttribute("class","massagebox");
+	
+		var img = document.createElement("img");
+	
+		img.src = "me.png";
+	
+		img.setAttribute("class","meimg");
+	
+		massagebox.appendChild(img);
+	
+		var lable = document.createElement("p");
+	
+		lable.setAttribute("class","massage");
+	
+		lable.innerHTML = input.value;
+	
+		massagebox.appendChild(lable);
+	
+		var content = document.getElementById("talkcontent");
+	
+		content.appendChild(massagebox);
+	
+		//插入医生说的话
+		var docimg = document.getElementById("docimg");
+	
+		massagebox = document.createElement("div");
+	
+		massagebox.setAttribute("class","massagebox");
+	
+		content.appendChild(massagebox);
+	
+		img = document.createElement("img");
+	
+		img.src = docimg.src;
+	
+		img.setAttribute("class","docimg");
+	
+		massagebox.appendChild(img);
+	
+		var docmassage = document.createElement("p");
+	
+		docmassage.setAttribute("class","docmassage");
+	
+		docmassage.innerHTML = "哈哈哈哈！活该！";
+	
+		massagebox.appendChild(docmassage);
+	}
+}
+
+</script>
+<style>
+
+.massagebox{
+	width:100%;
+	height:50px;
+	position:relative;
+}
+.meimg{
+	position:absolute;
+	width:30px;
+	height:30px;
+	right:0px;
+}
+.massage{
+	height:30px;
+	text-align:right;
+	position:absolute;
+	right:30px;
+	top:-10px;
+	color:#000;
+	font-weight:bolder;
+}
+.docimg{
+	position:absolute;
+	width:30px;
+	height:30px;
+	left:0px;
+}
+.docmassage{
+	height:30px;
+	text-align:left;
+	position:absolute;
+	left:30px;
+	top:-10px;
+	color:#00F;
+	font-weight:bolder;
+}
+</style>
+<body> 
+
+<div data-role="page" id="pageone">
+	<div data-role="header" data-position="fixed">
+    	<h1>在线专家</h1>
+    </div>
+    <ul data-role="listview">
+    	<li>
+        	<a onClick="talk(this)" href="#pagetwo">
+            	<img src="2.jpg" width="50px" height="50px" style="margin-left:15px; margin-top:15px;">
+            	<h2>张医生</h2>
+                <p>五十年老中医，专治疑难杂症.</p>
+            </a>
+        </li>
+        <li>
+        	<a onClick="talk(this)" href="#pagetwo">
+            <img src="7.jpg" width="50px" height="50px" style="margin-left:15px; margin-top:15px;">
+            	<h2>欧阳医生</h2>
+                <p>兽医出身，专业！</p>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div data-role="page" id="pagetwo">
+	<div data-role="header" data-position="fixed">
+    	<h1 id="docname"></h1>
+        <a data-role="button" data-rel="back">返回</a>
+    </div>
+    <div data-role="content" id="talkcontent">
+    	<img id="docimg" style="display:none;">
+    </div>
+    <div data-role="footer" data-position="fixed">
+    	<input id="inputlable" style="width:80%; background:#CCC; float:left; color:#000; font-weight:bolder;">
+        <a data-role="button" style="width:15%;" onClick="send()">发送</a>
+    </div>
+</div>
+
+</body>
+</html>

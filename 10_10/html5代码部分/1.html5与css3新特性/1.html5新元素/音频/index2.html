@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<script>
+
+//拿到画布
+var c = document.getElementById("demo");
+//拿笔：图形上下文
+var context = c.getContext("2d");
+//矩形颜色：
+context.fillStyle="#FF0000";
+//矩形大小：
+context.fillRect(100,100,100,100);
+//填充
+context.fill();
+
+</script>
+
+<body>
+
+<canvas id="demo" width="300" height="400" ></canvas>
+
+</body>
+</html>

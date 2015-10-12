@@ -1,0 +1,332 @@
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ *
+ * Description:
+ *     H5第一天授课内容，主要了解H5新增元素、简单的js代码编写、css以及css3属性。
+ *
+ * Original Date:
+ *     10-09-2015
+ *
+ *
+ * Modified Date:
+ *
+ *
+ * Authors:
+ *     create by 杨宇超
+ *     yangyuchao@1000phone.com
+ *
+ * Current Version:
+ *     1.0.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Table of Centents（目录）
+
+   
+01. audio 
+02. video
+03. 简单的js代码 
+04. css选择器
+05. 边框与圆角边框
+06. 边框阴影
+07. 2D旋转与3D旋转   
+08. 过渡 
+09. 照片墙demo
+
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+01.audio
+     打开dreamweaver，新建html5文档。
+     在body中输入代码：
+     <audio src="但愿人长久.mp3" controls="controls">您的浏览器不支持audio</audio>
+
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+02.video
+     让学生自己写video元素
+     <video src="横冲直撞好莱坞.mp4" controls="controls" autoplay="autoplay">您的浏览器不支持video</video>
+
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+03.简单的js代码
+     如何用代码向html文档插入元素？
+     js脚本可写在任意位置，用<script></script>标签承载
+     js为脚本语言，在程序运行时会被逐行运行。
+     在</head>和<body>中写：
+     <script>
+     //创建视频元素
+     var x = document.createElement("video");
+     //为元素添加文本：
+     var text = document.createTextNode("您的浏览器不支持video");	
+     x.appendChild(text);
+     //为元素添加属性：
+     x.setAttribute("src","横冲直撞好莱坞.mp4");
+     x.setAttribute("controls","controls");
+     x.setAttribute("autoplay","autoplay");
+     //将元素插入页面：
+     document.body.appendChild(x);
+     </script>
+     
+     如何点击视频的同时实现播放与暂停？
+     为video的onclick属性添加响应函数，onclick为元素点击事件
+<video src="横冲直撞好莱坞.mp4" controls="controls" autoplay="autoplay" onClick="playPause(this)">您的浏览器不支持video</video>
+
+     在script标签内实现playPause（）函数：
+     function playPause(obj)
+     {
+	if(obj.paused)
+	{
+		obj.play();
+	}
+	else
+	{
+		obj.pause();
+	}
+     }
+
+     若是使用js向文档中插入的video元素，可以用代码设置其onclick属性：
+     x.setAttribute("onclick","playPause(this)");
+
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+04.css选择器
+     常用的css选择器有四种，分别为标签选择器、id选择器、类型选择器、派生选择器。
+     标签选择器：
+     在body中创建div元素
+     <div></div>
+     在</head>与<body>中创建<style></style>标签，用于承载css样式表。
+     <style>
+     div{
+           width:300px;
+           height:100px;
+           backgroundColor：red；
+          }
+     </style>
+     标签选择器能够选取到文档内所有的某种标签，如上代码，可选取到html文档内所有的div元素。
+
+     id选择器：id选择器使用"#"符号定义
+     为div标签设置id属性
+     <div id="box"></div>
+     在style标签内输入css代码为id为box的元素设置样式：
+     <style>
+     #box{
+           width:300px;
+           height:100px;
+           backgroundColor：red；
+          }
+     </style>
+     由于元素的id属性值是唯一的，所以id选择器只能选中某一个html元素。
+
+     类型选择器：类型选择器使用"."符号定义
+     为div标签设置class属性
+     <div class="box"></div>
+     在style标签内输入css代码为id为box的元素设置样式：
+     <style>
+     .box{
+           width:300px;
+           height:100px;
+           backgroundColor：red；
+          }
+     </style>
+     元素的类型不唯一，可以为不同的元素设置相同的类型，从而批量设置它们的css样式，一个元素可拥有多个类型，如：
+     <div class="box box1"></div>
+     <div class="box box2"></div>
+     可使用".box"选择所有的div进行共同的样式设置，也可以使用".box1"和".box2"分别为两个div元素进行样式设置。
+
+     派生选择器：
+     有时我们会需要进行一些特殊的元素选择，如下面文档的情况：
+     <div class="content">
+               <div class="box"></div>
+     </div>
+     <div class="box"></div>
+     现在，假如我们要选取的是content之内类型为的box的元素，如果使用".box"选择，那么content之外的div元素也会被选择到，按照之前的经验，我们可以为content盒子内的div元素单独添加一个类型，但其实不必那么做，这里我们将使用派生选择器：
+     <style>
+     .content .box{
+           width:300px;
+           height:100px;
+           backgroundColor：red；
+          }
+     </style>
+     使用".content(空格).box"可以选择到content中类型为box的元素。
+
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+05.边框与圆角边框
+     与width和height一样，边框也是css的属性：border
+     .box{
+           width:300px;
+           height:100px;
+           border:2px solid #a1a1a1;
+          }
+     第一个参数'2px'为边框宽度，第二个参数'#a1a1a1'为边框颜色。
+
+     圆角边框：
+     .box{
+           width:300px;
+           height:100px;
+           border:2px solid #a1a1a1;
+           border-radius:25px;
+           -moz-border-radius:25px; /* 老的 Firefox */
+           -webkit-border-radius:25px; /* 老的safari和chrome*/
+           -o-border-radius:25px; /* 老的opera */
+           -ms-border-radius:25px; /* 老的ie */
+          }
+     border-radius为css3的属性，并不是所有浏览器都对其进行了支持，所以要进行浏览器适配。
+
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+06.边框阴影
+     边框阴影是css3的属性，与圆角边框一样，需要进行浏览器适配。
+     .box{
+           width:300px;
+           height:100px;
+           border:2px solid #a1a1a1;
+           box-shadow: 10px 10px 5px #888888;
+           -moz-box-shadow: 10px 10px 5px #888888;/* 老的 Firefox */
+           -webkit-box-shadow: 10px 10px 5px #888888;/* 老的safari和chrome*/
+           -o-box-shadow: 10px 10px 5px #888888; /* 老的opera */
+           -ms-box-shadow: 10px 10px 5px #888888; /* 老的ie */
+          }
+     *10px 10px 5px #888888分别为阴影的x轴偏移量、y轴偏移量、虚幻、阴影颜色。
+
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+07.2D旋转与3D旋转
+     旋转属性:transform为css3的属性，需要进行浏览器适配，2D旋转使用rotate(10deg)参数，括号内为旋转角度，3D旋转需指定绕哪个轴旋转，绕x轴旋转参数为rotateX(10deg)，y轴为rotateY(10deg)。
+     div
+     {
+     margin:30px;
+     width:200px;
+     height:100px;
+     background-color:yellow;
+     transform:rotate(9deg);
+     -ms-transform:rotate(9deg); /* Internet Explorer */
+     -moz-transform:rotate(9deg); /* Firefox */
+     -webkit-transform:rotate(9deg); /* Safari 和 Chrome */
+     -o-transform:rotate(9deg); /* Opera */
+     }
+
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+08.过渡：transition
+     过渡：从一种css样式过渡到另一种css样式。
+     常用场景：当鼠标悬停在某一元素之上时，该元素样式会发生变化。
+     div{
+     border-radius:10px;
+     text-align:center;
+     width:100px;
+     height:100px;
+     background:yellow;
+     transition:width 2s,height 2s,background 2s,transform 2s;
+     -webkit-transition:width 2s,height 2s,background 2s,transform 2s;
+     -moz-transition:width 2s,height 2s,background 2s,transform 2s; /* Firefox 4 */
+     -ms-transition:width 2s,height 2s,background 2s,transform 2s; /* Safari and Chrome */
+     -o-transition:width 2s,height 2s,background 2s,transform 2s; /* Opera */
+     }
+     
+     div:hover{
+     width:200px;
+     height:200px;
+     background:red;
+     transform:rotate(360deg);
+     -ms-transform:rotate(9deg); /* Internet Explorer */
+     -moz-transform:rotate(9deg); /* Firefox */
+     -webkit-transform:rotate(9deg); /* Safari 和 Chrome */
+     -o-transform:rotate(9deg); /* Opera */
+     }
+
+     *transition属性的参数：1）.哪个属性需要应用过渡效果，2）.该属性过渡时间；多个属性与时间之间用逗号隔开，当所有属性都应用过渡效果并且过渡时间相同时（如上例）如：
+      transition:all 2s;
+     *div:hover是特殊的选择器，hover表示悬停事件，当div元素被悬停时才会应用该样式，悬停结束后会回到原来的样式。
+
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+09.照片墙demo
+     功能描述：照片墙是常规网页中常用的效果，主要应用css属性：阴影、边距、2D旋转、过渡，当鼠标悬停在图片上的时候，照片旋转角度归零，阴影变深。
+
+     创建div盒子并赋予class属性；把9张图片引入  并赋予class属性，方便样式设置。
+     container要对内容块进行整体样式设置
+     pic要对所有图片进行统一样式设定
+     pic1~pic9对每张图片进行不同设置
+     
+     html代码：
+     <div class="container">
+	<img class="pic pic1" src="img/1.jpg">
+	<img class="pic pic2" src="img/2.jpg">
+	<img class="pic pic3" src="img/3.jpg">
+	<img class="pic pic4" src="img/4.jpg">
+	<img class="pic pic5" src="img/5.jpg">
+	<img class="pic pic6" src="img/6.jpg">
+	<img class="pic pic7" src="img/7.jpg">
+	<img class="pic pic8" src="img/8.jpg">
+	<img class="pic pic9" src="img/9.jpg">
+     </div>
+
+     创建css文件命名为style，引入
+     <link rel="stylesheet" type="text/css" href="style.css">
+
+     css代码：
+
+     body{
+               background-color:#CCC;/*背景色*/
+               }
+		
+     .container{
+               width:960px;/*盒子宽度为960*/
+               height:450px;/*盒子高度为450,如果注释掉则会根据内容高度自适应*/
+               margin:60px auto;/*上下外边距为60，左右外边距自适应，会居中*/
+               position:relative;/*布局方式为相对布局*/
+     }
+
+     .pic{
+               width:150px;/*设置每个pic的宽度为150*/
+     }
+
+     .container img{
+               padding:10px 10px 10px;/*顶部内边距 左右内边距 底部内边距*/
+               background:white;/*颜色*/
+               border:1px solid#ddd;/*边框宽度为和颜色*/
+               box-shadow:5px 5px 3px rgba(50,50,50,0.4);/*阴影左移5，下移5，虚化3，颜色和透明度*/
+               transition:all 0.5s;/*最后添加过度效果*/
+               }
+	
+     /*设置每张图片的倾斜角度*/
+     .pic1{
+               transform:rotate(-5deg);
+     }
+
+     .pic2{
+               transform:rotate(-20deg);
+     }
+
+     .pic3{
+               transform:rotate(5deg);
+     }
+
+     .pic4{
+               transform:rotate(0deg);
+     }
+
+     .pic5{
+               transform:rotate(-15deg);
+     }
+
+     .pic6{
+               transform:rotate(-5deg);
+     }
+
+     .pic7{
+               transform:rotate(10deg);
+     }
+
+     .pic8{
+               transform:rotate(15deg);
+     }
+
+     .pic9{
+               transform:rotate(-10deg);
+     }
+
+     /*添加鼠标事件*/
+     .container img:hover{
+               transform:rotate(0deg) scale(1.2);/*角度为0，放大到1.2倍，回头去添加过度效果*/
+     }
